@@ -1,6 +1,11 @@
 {
-  "name": "electron-react",
-  "version": "0.1.0",
+  "name": "gestion_stand_jpo",
+  "author": "Gaëtan VETILLARD",
+  "productName": "Huma'Népal - Gestion Stand JPO",
+  "description": "Gestion des ventes de la JPO - Huma'Népal",
+  "lang": "fr",
+  "icon": "./public/logo.ico",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@electron/remote": "^1.0.2",
@@ -9,8 +14,10 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^5.0.0-beta1",
     "electron-is-dev": "^1.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "fs": "^0.0.1-security",
+    "python-shell": "^3.0.1",
+    "react": "next",
+    "react-dom": "next",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
@@ -27,7 +34,11 @@
   },
   "build": {
     "extends": null,
-    "appId": "com.example.electron-cra",
+    "appId": "com.gestion_stand_jpo",
+    "win": {
+      "target": "nsis",
+      "icon": "logo.png"
+    },
     "files": [
       "dist/**/*",
       "build/**/*",
@@ -36,7 +47,16 @@
     ],
     "directories": {
       "buildResources": "assets"
-    }
+    },
+    "extraFiles": [
+      {
+        "from": "backend",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -59,7 +79,7 @@
   "devDependencies": {
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.3",
-    "electron": "^11.2.1",
+    "electron": "^15.3.0",
     "electron-builder": "^22.9.1",
     "prettier": "^2.2.1",
     "wait-on": "^5.2.1"
